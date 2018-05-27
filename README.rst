@@ -1,1 +1,6 @@
-helloworld
+# python自动化测试工程
+=======================
+mt/ui: Selenium测试脚本
+mt/if: 接口测试脚本
+lib：存放自定义库
+conf：存放配置文件
