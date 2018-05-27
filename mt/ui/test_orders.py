@@ -4,7 +4,7 @@ Created on 2017
 
 @author: huangxy
 '''
-from mt import config 
+from conftest import config 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -16,11 +16,10 @@ import logging.config
 logging.config.fileConfig(os.getcwd()+"/conf/logging.conf")
 
 log = logging.getLogger('root')
-config = config.cfg
 db = pymysql.connect(**config)
 cursor = db.cursor()
 driver = webdriver.Chrome()
-url="http://%s/mt" % config.HOST
+url="http://%s/mt" % config['host']
 
 def setup_module(module):    
     cursor.execute("TRUNCATE table order_item")

@@ -34,4 +34,4 @@ def test_put():
             "version":0
     }
     sc,h,body = put_json(location, data=form)
-    assert sc==200
+    assert sc==204

@@ -56,7 +56,7 @@ def test_INM():
     assert sc==304
 
 
-data = read_excel('testcases.xlsx')
+data = read_excel('testdata/testcases.xlsx')
 @pytest.mark.parametrize("edata", data)
 def test_excel(edata):    
     print "执行测试用例{}--{}:".format(edata['ID'], edata['Desc'])

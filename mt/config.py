@@ -11,9 +11,12 @@ cfg={
     'PREFIX':"",
     'S':None,
     'DB_IP':HOST,
+    'DB_PORT':3306,
     'DB_USER':'tester',
     'DB_PASSWD':'passwd',
     'DB':'scott',
+    
+    
 }
 
 #STUB服务器端口号
