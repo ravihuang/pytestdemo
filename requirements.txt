@@ -1,0 +1,9 @@
+pymysql
+pytest
+pytest-ordering
+pytest-dependency
+requests
+lxml
+selenium
+faker
+jsonpath
