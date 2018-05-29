@@ -1,5 +1,7 @@
 python自动化测试工程
 =======================
+.. HTTP REST接口及Selenium WebUI自动化测试框架demo
+
 目录说明
 --------
 - mt/config.py: 配置参数
