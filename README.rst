@@ -8,3 +8,8 @@ python自动化测试工程
 - lib：存放自定义库
 - conf：存放配置文件
 - testdata: 存放测试数据
+
+欢迎指教
+--------
+.. image:: https://raw.githubusercontent.com/ravihuang/pytestdemo/master/conf/qrcode.jpg
+
