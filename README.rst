@@ -1,6 +1,6 @@
 python自动化测试工程
 =======================
-.. HTTP REST接口及Selenium WebUI自动化测试框架demo
+HTTP REST接口及Selenium WebUI自动化测试框架demo
 
 目录说明
 --------
