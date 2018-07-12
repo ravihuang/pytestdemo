@@ -5,7 +5,7 @@ Created on 2017年4月28日
 
 @author: 黄小勇
 '''
-from Request import *
+from methods import *
 import pytest
 
 def test_get():  

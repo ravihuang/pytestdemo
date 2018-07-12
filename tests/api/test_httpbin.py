@@ -6,7 +6,7 @@ httpbin接口
 @author: 黄小勇
 '''
 import pytest
-from Request import *
+from methods import *
 
 data_basic_auth = [
     ("user","passwd",200),

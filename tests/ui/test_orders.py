@@ -4,31 +4,20 @@ Created on 2017
 
 @author: huangxy
 '''
-from conftest import config 
-from selenium import webdriver
+from conftest import * 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import Select
-import os,time,sys
-import pymysql
-import logging.config
-logging.config.fileConfig(os.getcwd()+"/conf/logging.conf")
-
-log = logging.getLogger('root')
-db = pymysql.connect(**config)
-cursor = db.cursor()
-driver = webdriver.Chrome()
-url="http://%s/mt" % config['host']
 
 def setup_module(module):    
+    log.info("setup_module")
     cursor.execute("TRUNCATE table order_item")
-    driver.implicitly_wait(10)
-    driver.maximize_window()    
-    driver.get(url)
     
 def teardown_module(module):
-    driver.quit()
+    log.info("teardown_module")
+    #cursor.execute("TRUNCATE table order_item")
+    
     
 def test_case_01_01():
     assert u"接口测试及自动化测试" in driver.title
@@ -49,8 +38,8 @@ def test_case_01_01():
     log.info("5.1. 确认购物车记录正确：")
     iframe=driver.find_element_by_id("fra")
     driver.switch_to.frame(iframe)
-    select=Select(driver.find_element_by_id('buy'))
-    select.select_by_visible_text(u"产品:iphone,数量:1234")
+    select=Select(driver.find_element_by_id('buy'))    
+    wait_until_succeed(30,1,select.select_by_visible_text,u"产品:iphone,数量:1234")
     driver.switch_to.default_content()
     
     log.info("5.2. 确认提示信息正确：")
