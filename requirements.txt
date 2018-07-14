@@ -10,3 +10,4 @@ jsonpath
 webtest
 falcon
 appium
+click

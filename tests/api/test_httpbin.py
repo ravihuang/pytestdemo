@@ -5,7 +5,6 @@ httpbin接口
 
 @author: 黄小勇
 '''
-import pytest
 from methods import *
 
 data_basic_auth = [

@@ -5,10 +5,6 @@ Created on 2017
 @author: huangxy
 '''
 from conftest import * 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import Select
 
 def setup_module(module):    
     log.info("setup_module")

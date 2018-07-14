@@ -6,7 +6,6 @@ Created on 2017年4月28日
 @author: 黄小勇
 '''
 from methods import *
-import pytest
 
 def test_get():  
     print "test_get"  

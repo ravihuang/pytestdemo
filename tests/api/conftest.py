@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 import functools
-import pytest
 import requests
-from tests import cfg
 import json
 from lxml import etree as et
 from libs import excel
- 
+from tests.api import *
+
 _module_id=0
 _case_id=0
 
@@ -44,40 +43,3 @@ def setup_function(request):
             pass
     request.addfinalizer(teardown_function) 
 
-def read_excel(fname):
-    return excel.read_sheet_byindex(fname=fname)
-
-
-def dec_url(func):
-    '''
-          自动补全url
-          自动处理json数据
-         返回(响应码,headers,body)          
-    '''    
-    @functools.wraps(func)
-    def wrapper(*args,**kwargs):
-        fname=func.__name__
-        if args[0].startswith('/'):
-            args=list(args)
-            args[0]=cfg['BASE_URL']+args[0]
-            args=tuple(args)
-
-        if "json" in fname:
-            kwargs['data']=json.dumps(kwargs['data'])
-            if('headers' not in kwargs):
-                kwargs.setdefault('headers',{'Content-Type':'application/json;charset=UTF-8'})
-            elif 'Content-Type' not in kwargs['headers']:
-                kwargs['headers'].setdefault('Content-Type','application/json;charset=UTF-8')
-        
-            return func(*args,**kwargs)    
-        resp = func(*args,**kwargs)
-        headers= resp.headers 
-        body = None
-        if "Content-Type" in headers:
-            if 'json' in headers['Content-Type'] and len(resp.text)>2:
-                body=json.loads(resp.text)
-            elif 'xml' in headers['Content-Type']:
-                body=et.XML(resp.text.encode("utf-8"))
-                              
-        return resp.status_code,headers,body
-    return wrapper

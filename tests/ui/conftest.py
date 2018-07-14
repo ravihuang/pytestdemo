@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-
-import pytest
-from tests import *
-import pymysql
-from selenium import webdriver
+from tests.ui import *
 
 config = {
           'host':cfg['DB_IP'],

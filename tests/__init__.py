@@ -12,8 +12,11 @@ while not os.path.exists(LOGCONF) and LOGCONF.count("..")<5:
 logging.config.fileConfig(LOGCONF)
 log = logging.getLogger('root')
 
-from config import *
+
+import pytest
+import pymysql
 from time import sleep
+from config import *
 
 def wait_until_succeed(retry, retry_interval,func,*args,**kwargs):
     '''
