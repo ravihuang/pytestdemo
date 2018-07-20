@@ -5,6 +5,7 @@ android模拟器管理
 import click
 import subprocess
 import os
+import re
 
 ANDROID_SDK = os.environ['ANDROID_HOME']
 SDK_MANAGER = os.path.join(ANDROID_SDK, 'tools', 'bin', 'sdkmanager')
@@ -13,8 +14,10 @@ EMULATOR = os.path.join(ANDROID_SDK, 'tools', 'emulator')
 EMULATOR_CHECK = os.path.join(ANDROID_SDK, 'tools', 'emulator-check')
 ADB = os.path.join(ANDROID_SDK, 'platform-tools', 'adb')
 
+
 def call(*args):
     x=subprocess.check_output(*args,shell=True)
+    print args
     #subprocess.call(*args,shell=True)
     print("------------"+x+"------------")
     return x
@@ -49,6 +52,21 @@ def delete(avd):
 @cli.command()
 def list():
     call([AVD_MANAGER, 'list', 'avd'])
+
+@cli.command()
+@click.argument('apk')
+def aapt(apk):
+    '''
+         return packageName and launchable-activity
+    '''
+    path=os.path.join(ANDROID_SDK, 'build-tools')
+    dirs=os.listdir(path)
+    AAPT = os.path.join(ANDROID_SDK, 'build-tools', dirs[-1], 'aapt')
+    out=call([AAPT, 'dump', 'badging', apk])
+    m=re.match(r"package: name='(\S*)'.*launchable-activity: name='(\S*)'",out,re.S)
+    print "packageName=%s \nMain activity=%s" % (m.group(1),m.group(2))
+    return m.group(1),m.group(2)
+            
 
 @cli.command()
 @click.argument('avd')
@@ -96,7 +114,7 @@ def check():
 
 
 if __name__ == '__main__':
-    print('Android Emulator Manager')
+    print(u'android虚拟机管理及常用命令，设置ANDROID_HOME环境变量后使用'.encode("gbk"))
     print('Terminology:')
     print('target - something like android-19 android-23')
     print('abi - x86 x86_64 armeabi-v7a or arm64-v8')
