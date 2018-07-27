@@ -6,7 +6,7 @@ HTTP REST接口及Selenium,Appium all-in-one自动化测试框架
 --------
 - tests/config.py: 配置参数
 - tests/ui: Selenium测试脚本
-- tests/if: 北向接口测试脚本
+- tests/api: 北向接口测试脚本
 - tests/stub: 南向接口测试脚本
 - tests/android: appium for android
 - tests/ios: appium for ios
