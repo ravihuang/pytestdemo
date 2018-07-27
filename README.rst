@@ -9,7 +9,7 @@ HTTP REST接口及Selenium,Appium all-in-one自动化测试框架
 - tests/if: 北向接口测试脚本
 - tests/stub: 南向接口测试脚本
 - tests/android: appium for android
-- tests/ios: appium fot ios
+- tests/ios: appium for ios
 - lib：存放自定义库
 - conf：存放配置文件
 - testdata: 存放测试数据
