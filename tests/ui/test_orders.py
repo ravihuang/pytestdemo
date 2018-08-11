@@ -7,7 +7,7 @@ Created on 2017
 from conftest import * 
 
 def setup_module(module):    
-    log.info("setup_module")
+    log.info("setup_module,清理脏数据")
     cursor.execute("TRUNCATE table order_item")
     
 def teardown_module(module):

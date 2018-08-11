@@ -11,13 +11,12 @@ config = {
 db = pymysql.connect(**config)
 cursor = db.cursor()
 driver = webdriver.Chrome()
-url=cfg["BASE_URL"]
 
 @pytest.fixture(scope="session",autouse=True)
 def setup_session(request):
     driver.implicitly_wait(0)
     driver.maximize_window()    
-    driver.get(url)  
+    driver.get(cfg["BASE_URL"])  
     def teardon_session():
             driver.quit()
             db.close()
