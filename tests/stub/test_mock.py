@@ -14,6 +14,9 @@ def test_things():
             """Handles GET requests"""
             resp.status = HTTP_200  # This is the default status
             resp.body = ('hello things!')
+        def on_post(self,req,resp):
+            resp.status = HTTP_200
+            
     # things will handle all requests to the '/things' URL path
     add_route('/things', Things())
     resp=requests.get("http://127.0.0.1:%s/things" % config.STUB_PORT)

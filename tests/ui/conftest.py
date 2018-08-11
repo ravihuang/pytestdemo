@@ -11,7 +11,7 @@ config = {
 db = pymysql.connect(**config)
 cursor = db.cursor()
 driver = webdriver.Chrome()
-url="http://%s/mt" % config['host']
+url=cfg["BASE_URL"]
 
 @pytest.fixture(scope="session",autouse=True)
 def setup_session(request):
