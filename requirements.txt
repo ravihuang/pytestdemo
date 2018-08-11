@@ -9,5 +9,6 @@ faker
 jsonpath
 webtest
 falcon
-appium
+xlrd
 click
+appium
