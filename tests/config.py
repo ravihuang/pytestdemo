@@ -3,7 +3,7 @@
 HOST="192.168.117.133"
 
 cfg={
-    'BASE_URL':"http://%s/tests" % HOST,
+    'BASE_URL':"http://%s/mt" % HOST,
     'PREFIX':"",
     'S':None,
     'DB_IP':HOST,

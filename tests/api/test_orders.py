@@ -25,7 +25,6 @@ def test_post():
     location=h['Location']
     assert sc==201
     
-@pytest.mark.dependency(depends=["test_post"])
 def test_put():
     print "test_put"
     form = {"name": "abc", 
@@ -33,4 +32,4 @@ def test_put():
             "version":0
     }
     sc,h,body = put_json(location, data=form)
-    assert sc==204
+    assert sc==200
