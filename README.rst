@@ -16,5 +16,5 @@ HTTP REST接口及Selenium,Appium all-in-one自动化测试框架
 
 欢迎指教
 --------
-.. image:: https://raw.githubusercontent.com/ravihuang/pytestdemo/master/conf/qrcode.jpg
+.. image:: https://raw.githubusercontent.com/ravihuang/pytestprj/master/conf/qrcode.jpg
 
