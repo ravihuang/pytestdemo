@@ -2,8 +2,6 @@
 
 import os
 import sys  
-reload(sys)  
-sys.setdefaultencoding('utf8')   # @UndefinedVariable
 
 import logging.config
 LOGCONF="conf"+os.sep+"logging.conf"
@@ -16,7 +14,7 @@ log = logging.getLogger('root')
 import pytest
 import pymysql
 from time import sleep
-from config import *
+from .config import *
 
 def wait_until_succeed(retry, retry_interval,func,*args,**kwargs):
     '''

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
-from conftest import *
+from .conftest import *
 
 def read_excel(fname):
     return excel.read_sheet_byindex(fname=fname)

@@ -5,7 +5,7 @@ httpbin接口
 
 @author: 黄小勇
 '''
-from methods import *
+from .methods import *
 
 data_basic_auth = [
     ("user","passwd",200),
@@ -14,24 +14,24 @@ data_basic_auth = [
 ]
 @pytest.mark.parametrize("uname,passwd,status_code", data_basic_auth)
 def test_basic_auth(uname,passwd,status_code):
-    print "http 基本认证："
+    log.info("http 基本认证：")
     sc,h,body = get('http://httpbin.org/basic-auth/user/passwd', auth=(uname, passwd))
     assert sc==status_code 
        
 def test_query_params():
-    print "http查询参数，Accept："
+    log.info( "http查询参数，Accept：")
     sc,h,body = get("http://httpbin.org/response-headers",params="Accept=ggg")    
     assert sc==200
     assert "content-type" in h
        
 def test_query_data():
-    print "http查询数据，Accept："
+    log.info( "http查询数据，Accept：")
     sc,h,body = get("http://httpbin.org/response-headers",data="Accept=ggg")    
     assert sc==200
     assert "content-type" in h
       
 def test_query_json():
-    print "http查询json"
+    log.info("http查询json")
     sc,h,body = get_json("http://httpbin.org/response-headers",data={"Accept":"ggg"})    
     assert sc==200
     assert "content-type" in h
@@ -43,13 +43,13 @@ def test_xml():
     assert body.xpath('/slideshow/@title')[0].find("Slide" )>=0
      
 def test_IMS():
-    print "%s http带If-Modified-Since头返回304：" % cfg['PREFIX']
+    log.info("%s http带If-Modified-Since头返回304：" % cfg['PREFIX'])
     headers = {'If-Modified-Since':'Wed, 02 May 2012 18:32:20 GMT'}
     sc,h,body = get("http://httpbin.org/cache",headers=headers)    
     assert sc==304
      
 def test_INM():
-    print "%s http带If-None-Match头返回304 :" % cfg['PREFIX']
+    log.info("%s http带If-None-Match头返回304 :" % cfg['PREFIX'])
     headers = {"If-None-Match":"231932131232103"}
     sc,h,body = get("http://httpbin.org/cache",headers=headers)    
     assert sc==304
@@ -58,8 +58,8 @@ def test_INM():
 data = read_excel('testdata/testcases.xlsx')
 @pytest.mark.parametrize("edata", data)
 def test_excel(edata):    
-    print "执行测试用例{}--{}:".format(edata['ID'], edata['Desc'])
-    print "第1步. 发送请求{} to /{}:".format(edata['Method'], edata['URL'])    
+    log.info("执行测试用例{}--{}:".format(edata['ID'], edata['Desc']))
+    log.info("第1步. 发送请求{} to /{}:".format(edata['Method'], edata['URL']))    
     url="http://httpbin.org/" +edata["URL"]
     if(edata['Method'] == 'GET'):
         sc,h,body = get(url)
@@ -70,5 +70,5 @@ def test_excel(edata):
     elif (edata['Method'] == 'DEL'):
         sc,h,body = delete(url)     
         
-    print "第2步. 确认收到的响应码为{}:".format(edata['Statuscode'])   
+    log.info("第2步. 确认收到的响应码为{}:".format(edata['Statuscode']))   
     assert sc == int(edata['Statuscode'])

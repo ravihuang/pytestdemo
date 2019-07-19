@@ -2,9 +2,9 @@
 '''
 Created on 2017
 
-@author: huangxy
+@author: testerq
 '''
-from conftest import * 
+from .conftest import * 
 
 def setup_module(module):    
     log.info("setup_module,清理脏数据")
@@ -44,5 +44,5 @@ def test_case_01_01():
     
     log.info("5.3. 确认数据库记录正确：")
     cursor.execute("SELECT id from order_item where name='iphone' and quantity=1234" )
-    print cursor.rowcount    
+    print(cursor.rowcount)    
     assert cursor.fetchall()

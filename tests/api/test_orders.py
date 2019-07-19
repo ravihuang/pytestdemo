@@ -3,12 +3,12 @@
 Created on 2017年4月28日
 订单接口
 
-@author: 黄小勇
+@author: testerq
 '''
-from methods import *
+from .methods import *
 
 def test_get():  
-    print "test_get"  
+    log.info("test_get")
     sc,h,body= get("/orders")
     assert sc==200
     assert len(body)>0
@@ -16,7 +16,7 @@ def test_get():
     assert h.get('user-agent1') == None
     
 def test_post():
-    print "test_post"
+    log.info("test_post")
     form = {"name": "iphone", 
             "quantity": 1111
     }    
@@ -26,7 +26,7 @@ def test_post():
     assert sc==201
     
 def test_put():
-    print "test_put"
+    log.info("test_put")
     form = {"name": "abc", 
             "quantity": 222,
             "version":0
