@@ -56,6 +56,7 @@ def test_INM():
 
 
 data = read_excel('testdata/testcases.xlsx')
+@pytest.mark.slow
 @pytest.mark.parametrize("edata", data)
 def test_excel(edata):    
     log.info("执行测试用例{}--{}:".format(edata['ID'], edata['Desc']))

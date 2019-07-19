@@ -68,5 +68,5 @@ def wrap_methods( cls, wrapper ):
         if hasattr( value, '__call__' ):
             setattr( cls, key, wrapper( value ) )
 # 装饰list中的方法
-[setattr(sys.modules[__name__],x.func_name,dec_url(x)) 
+[setattr(sys.modules[__name__],x.__name__,dec_url(x)) 
  for x in [delete,get,post,put,delete_json,get_json,post_json,put_json]]

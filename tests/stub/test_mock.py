@@ -6,7 +6,7 @@ Created on 2017年9月14日
 @author: 黄小勇
 '''
 import requests
-from conftest import *
+from .conftest import *
 
 def test_things():
     class Things(object):
@@ -20,5 +20,5 @@ def test_things():
     # things will handle all requests to the '/things' URL path
     add_route('/things', Things())
     resp=requests.get("http://127.0.0.1:%s/things" % config.STUB_PORT)
-    print resp.text
+    log.info(resp.text)
 

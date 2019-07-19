@@ -8,12 +8,6 @@ from tests.api import *
 
 _module_id=0
 _case_id=0
-
-def pytest_collection_modifyitems(items):
-    for item in items:
-        if "test_" in item.nodeid:
-            item.add_marker(pytest.mark.test)
-
             
 @pytest.fixture(scope="session",autouse=True)
 def setup_session(request):
